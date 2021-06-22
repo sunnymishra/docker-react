@@ -1,0 +1,15 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+# This will only run if package.json copied Updated date timestamp is changed
+RUN npm install
+
+# Copy everything else from current local dir to image file system WORKDIR
+# Note: If using docker volume to softlink docker filesystem with dev local machine, below COPY command becomes redundant and can be removed. But in prod we won't use Docker volumes so better keep this below COPY command in Dockerfile.
+
+COPY . .
+
+CMD ["npm", "run", "start"]
