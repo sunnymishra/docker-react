@@ -16,7 +16,6 @@ CMD ["npm","run","start"]
 
 
 
-
 FROM nginx
 
 # this EXPOSE 80 is required since we deploy docker on Aws Beanstalk
